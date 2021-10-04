@@ -11,11 +11,11 @@
 |name                |string        |null: false                  |
 |family_kana         |string        |null: false                  |
 |kana                |string        |null: false                  |
-|date                |string        |null: false                  |
-
+|date                |date          |null: false                  |
+#dateはdate型を使うことで無効な日付データの保存ができる！
 ### Association
 has_many :items
-
+has_one :order
 
 ###items  
 | Column        | Type         | Options                       |
@@ -30,25 +30,28 @@ has_many :items
 |shipping_id    |integer       |null: false                    |
 |user           |references    |null: false, foreign_key: true |
 |item_info      |text          |null: false                    |
-|order          |references    |null: false, foreign_key: true |
+
 
 ### Association
-belongs_to :users
-belongs_to :orders
+belongs_to :user
+belongs_to :order
 
 #itemはstringにすでOK!理由は255字までstringを使用してストレージの無駄を無くすため
-
+#テーブルだけと単数形なのは、belongs_toの場合は所有先のモデルを単数形にしないと正常に動作しないから！
 
 ######orders
 | Column    | Type         | Options                       |
 |-----------|--------------|-------------------------------|
-|order      |references    |null: false, foreign_key: true |
 |user       |references    |null: false, foreign_key: true |
-|item       |string        |null: false                    |
+|item       |references    |null: false, foreign_key: true |
 
 ### Association
-has_one :addresses
+has_one :address
 has_many :items
+belongs_to :user
+
+#has_oneの場合もbelongs_toと同様に単数形でOK！
+
 
 #######addresses
 | Column         | Type         | Options                       |
@@ -60,8 +63,7 @@ has_many :items
 |house_number    |string        |null: false                    |
 |building_number |string        |                               |
 |tel             |string        |null: false                    |
-|order           |references    |null: false, foreign_key: true |
 #post_code（郵便番号）はstring！理由は、ハイフンを使いたいから！
 #電話番号はstring！理由はintegerだと先頭が０だと０が取り除いた状態で保存されるから！
 ### Association
-belongs_to :orders
+belongs_to :order
