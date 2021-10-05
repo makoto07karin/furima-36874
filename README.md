@@ -64,6 +64,7 @@ belongs_to :user
 |house_number    |string        |null: false                    |
 |building_number |string        |                               |
 |tel             |string        |null: false                    |
+|area_id         |integer       |null: false                    |
 
 #post_code（郵便番号）はstring！理由は、ハイフンを使いたいから！
 #電話番号はstring！理由はintegerだと先頭が０だと０が取り除いた状態で保存されるから！
