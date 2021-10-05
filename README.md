@@ -60,7 +60,6 @@ belongs_to :user
 |----------------|--------------|-------------------------------|
 |order           |references    |null: false, foreign_key: true |
 |post_code       |string        |null: false                    |
-|prefecture_id   |integer       |null: false                    |
 |city            |string        |null: false                    |
 |house_number    |string        |null: false                    |
 |building_number |string        |                               |
@@ -68,7 +67,7 @@ belongs_to :user
 
 #post_code（郵便番号）はstring！理由は、ハイフンを使いたいから！
 #電話番号はstring！理由はintegerだと先頭が０だと０が取り除いた状態で保存されるから！
-
+#都道府県はitemsでarea_id代用できる！
 ### Association
 belongs_to :order
 
@@ -76,3 +75,4 @@ belongs_to :order
 
 #アソシエーションを考えるときは、対象同士のみの関係性で考えると
 シンプルでわかりやすい！
+#代用できるものは代用する！そしてストレージの無駄を省く！
