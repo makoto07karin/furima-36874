@@ -4,14 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   #validatesの設定をするが確か
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/,} do
-    validates :family_name
-    validates :name
-  end
+  with_options presence: true do
+    validates :family_name, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
+    validates :name,        format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
+  
   #一度本物がどう動作しているか確認する10/6１つのフォームからを参照
-  with_options presence: true, format: { with: /\A[ァ-ヶー]+\z/,} do
-    validates :family_kana
-    validates :kana
+    validates :family_kana, format: {with: /\A[ァ-ヶー]+\z/}
+    validates :kana,        format: {with: /\A[ァ-ヶー]+\z/}
   end
 
 
