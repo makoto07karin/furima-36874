@@ -1,18 +1,16 @@
 <%= render "shared/second-header"%>
 
-<%# 「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
+
 <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
-<%# //「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
+
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
       会員情報入力
     </h1>
   </div>
-
-  <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-  <% render 'shared/error_messages', model: f.object %>
-  <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+  
+  <%= render 'shared/error_messages', model: f.object %><%#2 %>
 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -108,3 +106,7 @@
 <%= render "shared/second-footer"%>
 
 <%#1今回:encrypted_passwordを使用しているがこれは、あくまでもカラムに入る時に変換されるものなので最初はpasswordでOK%>
+<%#2今回は「＝」が抜けていたからviewないだけで動作してブラウザに表示されなかった
+本題は、render 'shared/error_messages',の後ろの記述まず'shared/error_messages'が繋げたい場所
+その後のmodel: f.objectは繋げた先の動作を使用するための記述
+つまり_errorのmodel.errors.full_messages.each do |message|を使用したかった %>
