@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     nickname              {Faker::Name.initials(number: 2)}
     email                 {Faker::Internet.free_email}
-    password              {Faker::Internet.password(min_length: 6)}
+    password              {'1a' + Faker::Internet.password(min_length: 6)}#1
     password_confirmation {password}
     family_name           {'佐藤'}
     name                  {'ミキ'}
@@ -14,6 +14,8 @@ end
 
 #ここがモデルのバリデーションにあたると考える
 #Fakerの機能はチェックできた
+#1この記述にすることで、確実に英数字が含む様になる！
+
 
 
 

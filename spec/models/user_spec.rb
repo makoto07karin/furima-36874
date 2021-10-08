@@ -51,29 +51,105 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Family name can't be blank")#3
     end
+    it 'family_nameが数字では登録できない' do
+      @user.family_name = '0123456789'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name is invalid")
+    end
+    it 'family_nameが小文字のアルファベットでは登録できない' do
+      @user.family_name = 'qwertyuiopa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name is invalid")
+    end
+    it 'family_nameが大文字のアルファベットでは登録できない' do
+      @user.family_name = 'QWERTYU'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name is invalid")
+    end
+    it 'nameが数字では登録できない' do
+      @user.name = '0123456789'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Name is invalid")
+    end
     it 'nameが空では登録できない' do
       @user.name = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Name can't be blank")
+    end
+    it 'nameが小文字のアルファベットでは登録できない' do
+      @user.name = 'qwertyui'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Name is invalid")
+    end
+    it 'nameが大文字のアルファベットでは登録できない' do
+      @user.name = 'QWERTYU'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Name is invalid")
     end
     it 'family_kanaが空では登録できない' do
       @user.family_kana = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Family kana can't be blank")
     end
+    it 'family_kanaが数字では登録できない' do
+      @user.family_kana = '1234567890'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family kana is invalid")
+    end
+    it 'family_kanaが小文字のアルファベットでは登録できない' do
+      @user.family_kana = 'qwertyui'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family kana is invalid")
+    end
+    it 'family_kanaが大文字のアルファベットでは登録できない' do
+      @user.family_kana = 'QWERRTY'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family kana is invalid")
+    end
+    it 'family_kanaが漢字では登録できない' do
+      @user.family_kana = '月見里'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family kana is invalid")
+    end
+    it 'family_kanaがひらがなでは登録できない' do
+      @user.family_kana = 'やまなし'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family kana is invalid")
+    end
     it 'kanaが空では登録できない' do
       @user.kana = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Kana can't be blank")
     end
+    it 'kanaが数字では登録できない' do
+      @user.kana = '1234567890'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana is invalid")
+    end
+    it 'kanaが小文字のアルファベットでは登録できない' do
+      @user.kana = 'qwertyu'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana is invalid")
+    end
+    it 'kanaが大文字のアルファベットでは登録できない' do
+      @user.kana = 'QWERTYUIOP'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana is invalid")
+    end
+    it 'kanaが漢字では登録できない' do
+      @user.kana = '一二三'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana is invalid")
+    end
+    it 'kanaがひらがなでは登録できない' do
+      @user.kana = 'ひふみ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana is invalid")
+    end
     it 'dateが空では登録できない' do
       @user.date = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Date can't be blank")
-    end
-    it '' do
-    end
-    it '' do
     end
   end
 end
