@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
-  before do
-    @user = FactoryBot.build(:user)
+  before do #1
+    @user = FactoryBot.build(:user) #2
   end
 
   describe '新規登録' do
@@ -46,5 +46,18 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
+    it '' do
+    end
+    it '' do
+    end
+    it '' do
+    end
+    it '' do
+    end
   end
 end
+
+#1ここでインスタンスをコントローラーで記述する感じ？
+#2user = FactoryBot.build(:user)が
+#user = User.new(nickname: 'test', email: 'test@example'）と同じ記述になる
+#

@@ -6,3 +6,11 @@ FactoryBot.define do
     password_confirmation {password}
   end
 end
+
+#ここがモデルのバリデーションにあたると考える
+#Fakerの機能はチェックできた
+#family_name
+#name
+#family_kana
+#kana
+#date
