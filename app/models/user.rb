@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   #validatesの設定をするが確か
   with_options presence: true do
-    validates :family_name, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, length: { maximum: 6 }}
+    validates :family_name, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
     validates :name,        format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
   
   #一度本物がどう動作しているか確認する10/6１つのフォームからを参照
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   end
 
 
-  validates :nickname,    presence: true
+  validates :nickname,    presence: true, length: { maximum: 6 }
   validates :date,        presence: true
 
   # Association

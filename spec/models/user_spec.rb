@@ -46,9 +46,30 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
-    it '' do
+    it 'family_nameが空では登録できない' do
+      @user.family_name = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name can't be blank")#3
     end
-    it '' do
+    it 'nameが空では登録できない' do
+      @user.name = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Name can't be blank")
+    end
+    it 'family_kanaが空では登録できない' do
+      @user.family_kana = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family kana can't be blank")
+    end
+    it 'kanaが空では登録できない' do
+      @user.kana = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana can't be blank")
+    end
+    it 'dateが空では登録できない' do
+      @user.date = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Date can't be blank")
     end
     it '' do
     end
@@ -60,4 +81,4 @@ end
 #1ここでインスタンスをコントローラーで記述する感じ？
 #2user = FactoryBot.build(:user)が
 #user = User.new(nickname: 'test', email: 'test@example'）と同じ記述になる
-#
+#3 include("Family name can't be blank")ここでは、（）の頭は大文字でアンダーバーは無し！
