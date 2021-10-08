@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '新規登録' do
-    context  do #正常系¥
+    context  do #正常系4
       it 'nicknameとemailとpasswordとfamily_nameとnameとfamily_kanaとkanaとdateが存在するば登録できる'do
         expect(@user).to be_valid
       end
@@ -184,3 +184,4 @@ end
 #2user = FactoryBot.build(:user)が
 #user = User.new(nickname: 'test', email: 'test@example'）と同じ記述になる
 #3 include("Family name can't be blank")ここでは、（）の頭は大文字でアンダーバーは無し！
+#4今回正常系が一つなのは、新規登録は必要なデータがあそこに集まっているから
