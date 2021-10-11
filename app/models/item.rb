@@ -11,17 +11,22 @@ class Item < ApplicationRecord
   validates :user,          presence: true
   validates :item_info,     presence: true
 
+
   # Association
   has_one :order 
-  has_one_attached :image
+  has_one_attached :image#1
   belongs_to :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category_id
-  belongs_to :item_state_id
-  belongs_to :delivery_id
-  belongs_to :shipping_id
-  belongs_to :area_id
+  belongs_to :category
+  belongs_to :item_state
+  belongs_to :delivery
+  belongs_to :shipping
+  belongs_to :area
 
 end
 #presence: trueは空欄ではdbに保存できくするための記述
+
+#1ここで繋げてるからItemテーブルにImageカラムはなくてOK！
+#そして、ストロングパラメーターで記述すればOK!permitのとこ
+#なぜが、アソシエーションで繋がっているから！
