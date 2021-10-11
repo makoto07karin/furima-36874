@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
   validates :category_id,   presence: true
   validates :item,          presence: true
   validates :price,         presence: true
@@ -10,8 +12,16 @@ class Item < ApplicationRecord
   validates :item_info,     presence: true
 
   # Association
-  belongs_to :user
   has_one :order 
   has_one_attached :image
+  belongs_to :user
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category_id
+  belongs_to :item_state_id
+  belongs_to :delivery_id
+  belongs_to :shipping_id
+  belongs_to :area_id
+
 end
 #presence: trueは空欄ではdbに保存できくするための記述
