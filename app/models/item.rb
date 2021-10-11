@@ -1,13 +1,13 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
-  validates :category_id,   presence: true
+  validates :category_id,   presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :item,          presence: true
   validates :price,         presence: true
-  validates :item_state_id, presence: true
-  validates :delivery_id,   presence: true 
-  validates :area_id,       presence: true
-  validates :shipping_id,   presence: true
+  validates :item_state_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :delivery_id,   presence: true, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :area_id,       presence: true, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :shipping_id,   presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :user,          presence: true
   validates :item_info,     presence: true
 
