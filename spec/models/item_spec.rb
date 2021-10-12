@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.build(:item)
+    @item = FactoryBot.build(:item)#1
   end
 
   describe '商品の情報を入力' do
@@ -58,9 +58,16 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Item info can't be blank")
       end
-      it '' do
-      
+      it 'priceは半角数字でないと保存できない' do
+        @item.price = '１'    #2
+        @item.valid?          #3
+        expect(@item.errors.full_messages).to include("Price can't be Half-width number")#4
       end
     end
   end
 end
+
+#1コンソールで調べたい時は最初にここから元の情報を入手
+#2条件を入れる
+#3条件が合っているか確認して
+#4メッセージが正しく表示できているか！

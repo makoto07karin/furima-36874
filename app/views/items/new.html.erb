@@ -8,7 +8,7 @@
     <%= form_with model:@item, url:items_path, local: true do |f| %><%#1%>
 
 
-    <%= render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %><%#3%>
 
 
 
@@ -152,3 +152,5 @@
 </div>
 
 <%#1ここは、URLを記述しなくてもモデルの方で合わせてくれるただし、deviseの時はURLの記述は必要！%>
+
+<%#3こいつがエラー文の機能をしているここから_errot_messageに飛んでいる%>

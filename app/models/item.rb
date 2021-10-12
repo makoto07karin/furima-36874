@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   validates :category_id,   presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :item,          presence: true
-  validates :price,         presence: true
+  validates :price,         presence: true, numericality: { with: /\A[0-9]+\z/, message: "can't be Half-width number"}#3
   validates :item_state_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :delivery_id,   presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :area_id,       presence: true, numericality: { other_than: 0 , message: "can't be blank"}
@@ -32,4 +32,7 @@ end
 #そして、ストロングパラメーターで記述すればOK!permitのとこ
 #なぜが、アソシエーションで繋がっているから！
 
-#2イメージにもバリデーションをかける！
+#2イメージにもバリデーションをかける！Half-width number
+
+#3 今回は数字を扱っているのでformatではなくnumericalityを使用していく！
+#3更にdeviseの時とは異なりメッセージは自分で記述できるのでアレンジが可能！
