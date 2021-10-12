@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   validates :shipping_id,   presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :user,          presence: true
   validates :item_info,     presence: true
+  validates :image,         presence: true#2
 
 
   # Association
@@ -30,3 +31,5 @@ end
 #1ここで繋げてるからItemテーブルにImageカラムはなくてOK！
 #そして、ストロングパラメーターで記述すればOK!permitのとこ
 #なぜが、アソシエーションで繋がっているから！
+
+#2イメージにもバリデーションをかける！
