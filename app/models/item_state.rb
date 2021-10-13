@@ -1,4 +1,4 @@
-class ItemState < ActiveHash::Base#1
+class ItemState < ActiveHash::Base
   self.data = [
 
     { id: 1, name: '--'},
@@ -14,4 +14,3 @@ class ItemState < ActiveHash::Base#1
   include ActiveHash::Associations
   has_many :items
 end
-#1モデルの命名規則で「＿」はNG！単語が二つの時は、くっつけるのとお互いの頭文字を大文字にする！

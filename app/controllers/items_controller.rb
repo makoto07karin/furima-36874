@@ -3,17 +3,17 @@ class ItemsController < ApplicationController
     
   end
 
-  def show
+  #def show
     
-  end
+  #end
 
   def new
     @item = Item.new
   end
 
-  def edit
+  #def edit
     
-  end
+  #end
 
   def create
     @item = Item.new(item_params)

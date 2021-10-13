@@ -1,18 +1,18 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
-  before do #1
-    @user = FactoryBot.build(:user) #2
+  before do 
+    @user = FactoryBot.build(:user) 
   end
 
   describe '新規登録' do
-    context  do #正常系4
+    context  '正常系' do 
       it 'nicknameとemailとpasswordとfamily_nameとnameとfamily_kanaとkanaとdateが存在するば登録できる'do
         expect(@user).to be_valid
       end
     end
 
 
-    context do #異常系
+    context '異常系' do 
       it 'nicknameが空では登録できない' do
         @user.nickname = ''
         @user.valid?
@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
       it 'family_nameが空では登録できない' do
         @user.family_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name can't be blank")#3
+        expect(@user.errors.full_messages).to include("Family name can't be blank")
       end
       it 'family_nameが数字では登録できない' do
         @user.family_name = '0123456789'
@@ -180,8 +180,3 @@ RSpec.describe User, type: :model do
   end
 end
 
-#1ここでインスタンスをコントローラーで記述する感じ？
-#2user = FactoryBot.build(:user)が
-#user = User.new(nickname: 'test', email: 'test@example'）と同じ記述になる
-#3 include("Family name can't be blank")ここでは、（）の頭は大文字でアンダーバーは無し！
-#4今回正常系が一つなのは、新規登録は必要なデータがあそこに集まっているから

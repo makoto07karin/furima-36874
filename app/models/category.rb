@@ -1,4 +1,4 @@
-class Category < ActiveHash::Base#1
+class Category < ActiveHash::Base
   self.data = [
     { id: 1,  name: '--'},
     { id: 2,  name: 'レディース'},
@@ -17,4 +17,3 @@ class Category < ActiveHash::Base#1
   include ActiveHash::Associations
   has_many :items
 end
-#1モデルの命名規則で「＿」はNG！
