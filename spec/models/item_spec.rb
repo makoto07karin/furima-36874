@@ -37,11 +37,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Item can't be blank")
       end
-        it 'itemが未選択では登録できない' do
-          @item.item = ''
-          @item.valid?
-          expect(@item.errors.full_messages).to include("Item can't be blank")
-      end
       it 'priceが空では登録できない' do
         @item.price = ''
         @item.valid?
