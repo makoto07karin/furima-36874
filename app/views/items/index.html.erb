@@ -136,14 +136,12 @@
               <div class='item-img-content'>
                 <%= image_tag i.image, class: "item-img" if i.image.attached? %>
 
-                <%# 商品が売れていればsold outを表示しましょう %>
-                <% if %>
+                <%# if attr_accessor :price %>
                   <div class='sold-out'>
-                    <span>Sold Out!!</span>
+                    <%# <span>Sold Out!!</span> %>
                   </div>
-                <% end %>
-                <%# //商品が売れていればsold outを表示しましょう %>
-
+                <%# end %>
+                
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
