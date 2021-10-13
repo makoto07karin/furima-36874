@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
     @item = Item.all
   end
 
-  #def show
+  def show
     
-  #end
+  end
 
   def new
     @item = Item.new
