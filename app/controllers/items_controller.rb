@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:update]
   before_action :authenticate_user!, only:[:new, :create]
 
   def index
@@ -29,14 +30,21 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
-    @item.update(item_params)
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
   end 
 
   private
 
   def item_params
     params.require(:item).permit(:category_id, :item, :price, :item_state_id, :delivery_id, :area_id, :shipping_id, :item_info, :image).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end  
 
