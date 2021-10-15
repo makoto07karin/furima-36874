@@ -5,7 +5,7 @@ class User < ApplicationRecord
   
   with_options presence: true, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, allow_blank: true} do
     validates :family_name
-    validates :name        
+    validates :name
   end
 
   
@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validates :date,        presence: true
 
   # Association
-  #has_many :items今はコメントアウト！1008
+  has_many :items
   #has_many :orders今はコメントアウト！1008
 end
 
