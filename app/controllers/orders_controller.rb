@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
+   
     @order_addresse = OrderAddresse.new #今回はここに記述しているのでNEWはいらない
   end
 
@@ -19,7 +20,11 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_addresses).permit(:user, :item, :post_code, :city, :house_number, :building_numberty, :tel, :area_id).merge(user_id: current_user.id)
+    params.require(:order_addresse).permit(  :post_code, :city, :house_number, :building_numberty, :tel, :area_id).merge(user_id: current_user.id,item_id: @item.id )
+  end
+
+  def set_order
+    @item = Item.find(params[:item_id])
   end
 
 end
