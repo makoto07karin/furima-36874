@@ -6,6 +6,7 @@ FactoryBot.define do
     building_numberty{'ビル'}
     tel{'02367828888'}
     area_id{'7'}
+    token {"tok_abcdefghijk00000000000000000"}
 
   end
 end

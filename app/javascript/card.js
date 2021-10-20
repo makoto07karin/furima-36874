@@ -1,5 +1,5 @@
 const pay = () => {
-  Payjp.setPublicKey("pk_test_53d7530a940591a00960a515"); // PAY.JPテスト公開鍵
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY); // PAY.JPテスト公開鍵
   const submit = document.getElementById("button");
   submit.addEventListener("click", (e) => {
     e.preventDefault();
@@ -13,7 +13,7 @@ const pay = () => {
       exp_month: formData.get("order_addresse[exp_month]"),
       exp_year: `20${formData.get("order_addresse[exp_year]")}`,
     };
-    //console.log(card)
+    console.log(card)
     //debugger;
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
