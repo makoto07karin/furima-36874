@@ -12,15 +12,14 @@ RSpec.describe OrderAddresse, type: :model do
   describe '購入情報の保存' do
     context '正常系' do
       it '全ての値が正しく入力されていれば保存できる' do
-      #binding.pry
-      end 
+      
       it 'building_numbertyがなくても保存できる' do
       end 
     end
 
     context '異常系' do
       it 'post_codeがないと保存できない' do
-        #binding.pry
+        
         @order_addresse.post_code = ''
         @order_addresse.valid?
         expect(@order_addresse.errors.full_messages).to include("Post code can't be blank")
@@ -56,7 +55,7 @@ RSpec.describe OrderAddresse, type: :model do
         expect(@order_addresse.errors.full_messages).to include("Tel is invalid")
       end
       it "tokenが空では保存できない" do
-        #binding.pry
+        
         @order_addresse.token = nil
         @order_addresse.valid?
         expect(@order_addresse.errors.full_messages).to include("Token can't be blank")

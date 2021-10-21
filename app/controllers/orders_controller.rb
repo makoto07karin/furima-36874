@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only:[:index, :create]
   before_action :set_order, only: [:index, :create]
+  before_action :move_to_index, only: [:index]
 
   def index
    
@@ -35,6 +37,17 @@ class OrdersController < ApplicationController
       amount: @item.price,
       card: order_params[:token],
       currency: 'jpy')
+  end
+
+  def move_to_index
+    #ログイン状態の場合でも、URLを直接入力して自身が出品していない,売却済み商品の商品購入ページへ遷移しようとすると、トップページに遷移する動画
+    if current_user.id != @item.order
+      redirect_to root_path
+    #自分自身が出品した商品
+    else @item.user.user_id != @item
+      redirect_to root_path
+
+    end
   end
 
 end
