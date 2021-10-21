@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #binding.pry
+    
     @order_addresse = OrderAddresse.new(order_params)
    
     if @order_addresse.valid?
