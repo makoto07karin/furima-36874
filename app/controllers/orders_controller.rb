@@ -40,13 +40,10 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    #ログイン状態の場合でも、URLを直接入力して自身が出品していない,売却済み商品の商品購入ページへ遷移しようとすると、トップページに遷移する動画
-    if current_user.id != @item.order
+    
+    if @item.order || current_user.id == @item.user_id
       redirect_to root_path
-    #自分自身が出品した商品
-    else @item.user.user_id != @item
-      redirect_to root_path
-
+     
     end
   end
 
